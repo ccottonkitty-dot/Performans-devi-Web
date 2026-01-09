@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişisel Portfolyo | Profesyonel Tanıtım</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --primary-pink: #f5d7de;
+            --dark-pink: #853c48;
+            --soft-pink: #f7ccd8;
+            --text-color: #2d1b22;
+            --accent-pink: #f7d7dc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--soft-pink);
+            color: var(--text-color);
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigasyon */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(247, 37, 133, 0.05);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark-pink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 25px;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark-pink);
+        }
+
+        /* Ortak Bölüm Yapısı */
+        section {
+            padding: 120px 12%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--dark-pink);
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-pink);
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+
+        /* Hero */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at top right, #fff5f7, var(--soft-pink));
+        }
+
+        .hero-content h1 {
+            color: var(--dark-pink);
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--dark-pink), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #ffffff;
+        }
+
+        /* Hakkımda ve Yetenekler */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .skill-bar {
+            margin-bottom: 20px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .progress-bg {
+            background: var(--accent-pink);
+            height: 10px;
+            border-radius: 20px;
+        }
+
+        .progress-fill {
+            background: var(--dark-pink);
+            height: 100%;
+            border-radius: 20px;
+            transition: 1s ease-in-out;
+        }
+
+        /* Deneyim Zaman Çizelgesi */
+        .timeline {
+            margin-top: 40px;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            border-left: 3px solid var(--primary-pink);
+            margin-left: 20px;
+            position: relative;
+            background: var(--white);
+            margin-bottom: 20px;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 25px;
+            width: 16px;
+            height: 16px;
+            background: var(--dark-pink);
+            border-radius: 50%;
+        }
+
+        /* Kartlar */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 25px;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(247, 37, 133, 0.1);
+        }
+
+        /* Form */
+        form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 30px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid var(--soft-pink);
+            background: #fffafa;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--dark-pink);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-pink);
+            box-shadow: 0 10px 20px rgba(247, 37, 133, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: var(--text-color);
+            color: var(--accent-pink);
+        }
+
+        @media (max-width: 768px) {
+            .about-container { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.8rem; }
+            section { padding: 80px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Tuana.YALÇINER</div>
+        <div class="nav-links">
+            <a href="#home">Giriş</a>
+            <a href="#about">Tanıtım</a>
+            <a href="#projects">Portfolyo</a>
+            <a href="#contact">İletişim</a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>merhabaaa! <br> Siteye Hoşgeldin</h1>
+            <p>Performans ödevimi olabildiğince iyi yapmak istiyorum <br>
+            hadi bakalım beğenicek misin?
+            </p>
+            <a href="#contact" class="btn">Hemen Başlayalım</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>İlgilendiklerim & Yeteneklerim </h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Ben Kimim?</h3>
+                <p> Ben TUANA YALÇINER şu mazlum 2026 yılında öğrencilik hayatımı olabildiğince güzel ve katkılı geçirmeye çalışıyorum . Sana kendimden bahsedecek olursam bir kedim var, 16 yaşındayım ve genel olarak derslerimle uğraşıyorum(zorunlu olarak) voleybol oynamayı ,kitap okumayı ve el sanatlarını severim.  </p>
+                <p style="margin-top: 15px;">Biraz dağınık bir insanım ,müzik dinlemeyi, şarkı söylemeyi severim böyle devam eden bir liste. Kendimi bir birey olarak tanıtmak istersem azimli,yardımsever,dürüst,konuşkan bir insanım .  </p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <strong>Yabancı Dil</strong>
+                        <p> Yabancı dil öğrenmeye aslında 11 yaşımda başladım "American Life" isimli bir kursa gitmiştim ve çok memnundum bu sayede o kurumdan çıktıktan sonra da devam ettim öğrenmeye.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <strong>Sanat</strong>
+                        <p>Bu alana da aslında küçükken başladım birkaç referansla çizdim ve başarılı buldum zamanı öldürmek ve hobi için güzel bir seçimdi .</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-box">
+                <div class="skill-bar">
+                    <div class="skill-info"><span>Pompompurin</span><span>95%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info"><span>hello kitty</span><span>85%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info"><span>my melody</span><span>90%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info"><span>gudetama</span><span>75%</span></div>
+                    <div class="progress-bg"><div class="progress-fill" style="width: 75%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: #fff9fa;">
+        <h2>Neler Yapıyorum?</h2>
+        <div class="grid">
+            <div class="card">
+                <i data-lucide="layout"></i>
+                <h3>Web Tasarımı</h3>
+                <p>Bir internet sitesi yapımı ,photoshop ,bir virtual bilgisayar ve telefon kodlayabiliyorum .</p>
+            </div>
+            <div class="card">
+                <i data-lucide="smartphone"></i>
+                <h3>Kültür Dersler</h3>
+                <p>Genellikle çoğu ile aram gayet iyidir sadece fiziğin cidden zor bir ders oldğunu düşünüyorum.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="shopping-bag"></i>
+                <h3>Spor</h3>
+                <p>Voleybol oynamaya bayılıyorum lisanlı bir şekilde oynuyorum hala aktif yaptığım fitness (tavsiye ediyorumm)</p>
+            </div>
+        </div>
+    </section>
+
+  <section id="faq" style="background: #fffcfd;">
+    <h2>Merak Edilen Küçük Şeyler</h2>
+    <div class="grid">
+        <div class="card" style="text-align: left; padding: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: var(--dark-pink); margin-bottom: 10px;">
+                <i data-lucide="coffee" style="width: 20px;"></i>
+                <strong>Güne nasıl başlarsın?</strong>
+            </div>
+            <p style="font-size: 0.95rem; color: #6d4c57;">Kesinlikle büyük bir bardak filtre kahve ve hafif bir müzik ile. Sabah enerjisi benim için en verimli çalışma saati demek bu nedenle derslerime hep sabah çalışıyorum.</p>
+        </div>
+
+        <div class="card" style="text-align: left; padding: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: var(--dark-pink); margin-bottom: 10px;">
+                <i data-lucide="palette" style="width: 20px;"></i>
+                <strong>Neden pembe tema?</strong>
+            </div>
+            <p style="font-size: 0.95rem; color: #6d4c57;">Pembe benim için sadece bir renk değil; yaratıcılığı, enerjiyi ve dijital dünyadaki o "soft" estetiği temsil ediyor. Gözü yormayan bir neşe kaynağı!</p>
+        </div>
+
+        <div class="card" style="text-align: left; padding: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: var(--dark-pink); margin-bottom: 10px;">
+                <i data-lucide="book-open" style="width: 20px;"></i>
+                <strong>İlham kaynakların neler?</strong>
+            </div>
+            <p style="font-size: 0.95rem; color: #6d4c57;">Pinterest'te kaybolmak, kitapların içine dalmak ve yemek yemek. Bazen bir çiçeğin renk paleti bile yeni bir tasarımın başlangıcı olabiliyor.</p>
+        </div>
+
+        <div class="card" style="text-align: left; padding: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: var(--dark-pink); margin-bottom: 10px;">
+                <i data-lucide="music" style="width: 20px;"></i>
+                <strong>Çalışırken ne dinlersin?</strong>
+            </div>
+            <p style="font-size: 0.95rem; color: #6d4c57;">Odaklanmam gerekiyorsa jazz, ama tasarım yapıyorsam kesinlikle yüksek enerjili Indie Pop veya nostaljik 80'ler</p>
+        </div>
+
+        <div class="card" style="text-align: left; padding: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: var(--dark-pink); margin-bottom: 10px;">
+                <i data-lucide="cat" style="width: 20px;"></i>
+                <strong>En sevdiğin ofis arkadaşın?</strong>
+            </div>
+            <p style="font-size: 0.95rem; color: #6d4c57;">Klavyemin üzerine yatıp kod yazmamı engelleyen kedim (minnoş)! O olmasa projeler muhtemelen çok daha hızlı biterdi ama bu kadar eğlenceli olmazdı.</p>
+        </div>
+
+        <div class="card" style="text-align: left; padding: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: var(--dark-pink); margin-bottom: 10px;">
+                <i data-lucide="plane" style="width: 20px;"></i>
+                <strong>Hayalindeki çalışma mekanı?</strong>
+            </div>
+            <p style="font-size: 0.95rem; color: #6d4c57;">Rahat yurt dışına çıkabileceğim bir home ofice!</p>
+        </div>
+    </div>
+</section>
+    <section id="contact">
+        <h2>Sende Bana Katılmak İster Misin?</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Benimle hayat hikayeni ve maceralarını paylaş güzel bir ekip olacağız.</p>
+        <form>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <input type="text" placeholder="Adınız" required>
+                <input type="email" placeholder="E-posta" required>
+            </div>
+            <input type="text" placeholder="Konu">
+            <textarea rows="5" placeholder="Projenizden kısaca bahsedin..."></textarea>
+            <div style="text-align: center;">
+                <button type="submit" class="btn">HADİİİ</button>
+            </div>
+        </form>
+    </section>
+
+    <footer>
+        <p><strong>tuana.//YALÇINER</strong></p>
+        <p style="margin: 15px 0; opacity: 0.7;">Kişisel tanıtım ve davet platformu.</p>
+        <div style="font-size: 1.5rem;">
+            <i data-lucide="instagram" style="margin: 0 10px; cursor: pointer;"></i>
+            <i data-lucide="linkedin" style="margin: 0 10px; cursor: pointer;"></i>
+            <i data-lucide="twitter" style="margin: 0 10px; cursor: pointer;"></i>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">© 2026 Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>
